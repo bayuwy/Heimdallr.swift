@@ -27,7 +27,12 @@ public enum HTTPAuthentication: Equatable {
                 return nil
             }
         case let .accessTokenAuthentication(accessToken):
-            return "\(accessToken.tokenType) \(accessToken.accessToken)"
+            if accessToken.tokenType.isEmpty {
+                return accessToken.accessToken
+            }
+            else {
+                return "\(accessToken.tokenType) \(accessToken.accessToken)"
+            }
         }
     }
 }
